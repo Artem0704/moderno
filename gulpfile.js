@@ -5,11 +5,11 @@ let gulp = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
-    cssmin = require('gulp-cssmin')
+    cssmin = require('gulp-cssmin');
 
 
 gulp.task('sass', function(){
-    return gulp.src('app/scss/**/*.scss')
+    return gulp.src('C/proeckt_jetro/moderno/app/scss/**/*.scss')
     .pipe(sass({outputStyle: 'compressed'}))
     .pipe(rename({suffix : ".min"}))
     .pipe(autoprefixer({
@@ -30,6 +30,8 @@ gulp.task('style', function(){
     .pipe(cssmin())
     .pipe(gulp.dest('app/css'))
 });
+
+
 
 gulp.task('script', function(){
     return gulp.src([
@@ -68,4 +70,4 @@ gulp.task('watch', function(){
 
 });
 
-gulp.task('default', gulp.parallel('style', 'script', 'sass', 'watch', 'browser-sync'))
+gulp.task('default', gulp.parallel('style', 'sass', 'watch', 'browser-sync', 'style'))
